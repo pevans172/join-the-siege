@@ -13,7 +13,7 @@ def classify_file(file: FileStorage) -> dict:
     if filename == "":
         return {"msg": {"error": "No selected file"}, "code": 400}
 
-    file_type = filename.rsplit(".", 1)[1].lower()
+    file_type = filename.rsplit(".")[-1].lower()
 
     if file_type not in ENV_VARIABLES["ALLOWED_EXTENSIONS"]:
         return {
@@ -25,7 +25,7 @@ def classify_file(file: FileStorage) -> dict:
 
     file_class = "unknown_file"
     if "drivers_license" in filename:
-        file_class = "drivers_licence"
+        file_class = "drivers_license"
     if "bank_statement" in filename:
         file_class = "bank_statement"
     if "invoice" in filename:
@@ -33,5 +33,5 @@ def classify_file(file: FileStorage) -> dict:
 
     return {
         "msg": {"file_class": file_class},
-        "code": 400,
+        "code": 200,
     }

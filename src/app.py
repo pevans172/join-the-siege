@@ -1,5 +1,5 @@
 from flask import Flask, request, jsonify
-from src.utils.classifier import classify_file
+from src.classifier import classify_file
 
 app = Flask(__name__)
 
